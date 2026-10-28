@@ -14,7 +14,8 @@ var polarLogo string
 
 var polarBanner = func() string {
 	lines := append([]string{""}, strings.Split(strings.TrimRight(strings.ReplaceAll(polarLogo, "\r\n", "\n"), "\n"), "\n")...)
-	lines = append(lines, "", fmt.Sprintf("POLAR  |  v%s  |  Windows amd64", version))
+	lines = append(lines, "", fmt.Sprintf("study class  |  v%s  |  Windows amd64", version))
+	lines = append(lines, "GitHub: https://github.com/polar400/study-class")
 	width := 66
 	for _, line := range lines {
 		if len(line) > width {

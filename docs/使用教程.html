@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>study class 使用教程 · v1.0.11</title>
+<style>
+:root{color-scheme:light;--ink:#203047;--muted:#526176;--line:#dbe2ec;--blue:#1557a1;--paper:#fff;--bg:#f3f6fa}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 "Microsoft YaHei","Segoe UI",sans-serif}
+header{background:#163b62;color:white;padding:28px max(24px,calc((100% - 1000px)/2));border-bottom:5px solid #8fbfd5}
+header strong{font-size:28px;letter-spacing:.03em}header p{margin:3px 0 0;color:#d9e7f3}
+main{max-width:1000px;margin:28px auto 48px;padding:32px 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+nav{border:1px solid var(--line);background:#f7faff;border-radius:8px;padding:14px 20px;margin:0 0 26px}nav a{display:inline-block;margin-right:18px}
+h1{font-size:29px;margin-top:0}h2{font-size:23px;border-top:1px solid var(--line);padding-top:24px;margin-top:36px;scroll-margin-top:18px}h3{font-size:18px;margin-top:28px}
+a{color:var(--blue);text-underline-offset:3px}p,ul,ol{margin:12px 0}li{margin:6px 0}code{font:14px/1.7 Consolas,"Microsoft YaHei",monospace;background:#edf2f8;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}pre{padding:18px;background:#14273e;color:#ecf4ff;border-radius:8px;overflow:auto}pre code{background:none;color:inherit;padding:0;white-space:pre}
+.table-wrap{overflow-x:auto;margin:18px 0}table{border-collapse:collapse;width:100%;min-width:540px;font-size:15px}th,td{border:1px solid var(--line);padding:10px 13px;text-align:left;vertical-align:top}th{background:#eaf1f8}tbody tr:nth-child(even){background:#fafbfd}
+footer{max-width:1000px;margin:0 auto 40px;padding:0 20px;color:var(--muted);font-size:14px}
+@media(max-width:650px){main{margin:16px 10px 30px;padding:22px 18px}header{padding:22px}header strong{font-size:25px}h1{font-size:25px}h2{font-size:21px}nav a{margin-bottom:5px}}
+@media print{body{background:white}header{color:#203047;background:white;padding:12px 0;border-bottom:1px solid #aaa}header p{color:#526176}main{border:0;margin:0;max-width:none;padding:12px 0}nav{display:none}pre{color:#111;background:#f3f3f3;white-space:pre-wrap}h2{break-after:avoid}.table-wrap{overflow:visible}table{min-width:0}}
+</style>
+</head>
+<body>
+<header><strong>study class</strong><p>支持西工商课程学习 · Windows x64 · POLAR 署名 Logo 保留</p></header>
+<main>
+<nav aria-label="教程目录"><a href="#section-2">下载</a><a href="#section-3">填写配置</a><a href="#section-7">运行菜单</a><a href="#section-8">查看进度</a><a href="#section-9">升级迁移</a><a href="#section-10">常见问题</a></nav>
+<h1 id="section-1">study class 使用教程</h1>
+<p>适用版本：v1.0.11，Windows x64。普通使用者不需要安装 Go。请使用本人或已获明确授权的账号，并先阅读随包许可和免责声明。</p>
+<h2 id="section-2">1. 下载并完整解压</h2>
+<ol>
+<li>打开 <a href="https://github.com/polar400/study-class/releases/latest">最新版本页面</a>。</li>
+<li>在附件中下载 <code>study-class-v1.0.11-windows-amd64.zip</code>。</li>
+<li>右键 ZIP，选择“全部解压”，解压到自己有写入权限的文件夹。不要在压缩软件内部直接运行。</li>
+<li>解压后的顶层应只有 <code>启动.bat</code>、<code>config.json</code>、<code>app/</code> 和 <code>docs/</code> 四项。</li>
+</ol>
+<p>GitHub 自动生成的“Source code (zip)”和“Source code (tar.gz)”面向开发者，里面没有可直接使用的成品 EXE。普通使用者请选择文件名包含 <code>windows-amd64</code> 的包。</p>
+<h2 id="section-3">2. 填写并保存账号</h2>
+<ol>
+<li>找到与 <code>启动.bat</code> 同一层的 <code>config.json</code>。不要在 <code>app/</code> 中另建配置。</li>
+<li>右键文件，选择“打开方式 → 记事本”。也可双击 <code>启动.bat</code> 后选择“打开配置”。</li>
+<li>将 <code>username</code> 后面的“请填写已授权学号”改为学号，将 <code>password</code> 后面的“请填写密码”改为密码。</li>
+<li>保存时使用 UTF-8 编码，文件名保持 <code>config.json</code>，不要变成 <code>config.json.txt</code>。</li>
+<li>保留英文双引号、冒号和逗号，最后一项后面不要多加逗号。</li>
+</ol>
+<p>第一次使用只需修改学号和密码。当前站点地址保留 <code>https://bxait.haiqikeji.com</code>；<code>authorization</code> 和 <code>cookie</code> 保持空字符串，不需要从浏览器复制。</p>
+<p>如果密码包含双引号 <code>&quot;</code>，JSON 中须写为 <code>\&quot;</code>；如果包含反斜杠 <code>\</code>，须写为 <code>\\</code>。不要将真实密码粘贴到公开的在线 JSON 工具、截图、Issue 或聊天记录中。</p>
+<h3 id="section-4">单账号配置示例</h3>
+<p>以下全部是占位内容，请替换后再使用：</p>
+<pre><code>{
+  &quot;global&quot;: {
+    &quot;server&quot;: &quot;127.0.0.1:10087&quot;,
+    &quot;limit&quot;: 3,
+    &quot;per_account_limit&quot;: 1,
+    &quot;page_size&quot;: 32,
+    &quot;heartbeat_seconds&quot;: 30,
+    &quot;timeout_seconds&quot;: 30,
+    &quot;course_ids&quot;: [],
+    &quot;include_ended&quot;: false
+  },
+  &quot;users&quot;: [
+    {
+      &quot;base_url&quot;: &quot;https://bxait.haiqikeji.com&quot;,
+      &quot;username&quot;: &quot;请填写已授权学号&quot;,
+      &quot;password&quot;: &quot;请填写密码&quot;,
+      &quot;authorization&quot;: &quot;&quot;,
+      &quot;cookie&quot;: &quot;&quot;
+    }
+  ]
+}</code></pre>
+<h3 id="section-5">多账号配置示例</h3>
+<p>在 <code>users</code> 数组中增加账号对象，相邻对象之间保留逗号。这里只填写本人或已获明确授权的账号：</p>
+<pre><code>{
+  &quot;global&quot;: {
+    &quot;server&quot;: &quot;127.0.0.1:10087&quot;,
+    &quot;limit&quot;: 3,
+    &quot;per_account_limit&quot;: 1,
+    &quot;page_size&quot;: 32,
+    &quot;heartbeat_seconds&quot;: 30,
+    &quot;timeout_seconds&quot;: 30,
+    &quot;course_ids&quot;: [],
+    &quot;include_ended&quot;: false
+  },
+  &quot;users&quot;: [
+    {
+      &quot;base_url&quot;: &quot;https://bxait.haiqikeji.com&quot;,
+      &quot;username&quot;: &quot;请填写第一个已授权学号&quot;,
+      &quot;password&quot;: &quot;请填写第一个密码&quot;,
+      &quot;authorization&quot;: &quot;&quot;,
+      &quot;cookie&quot;: &quot;&quot;
+    },
+    {
+      &quot;base_url&quot;: &quot;https://bxait.haiqikeji.com&quot;,
+      &quot;username&quot;: &quot;请填写第二个已授权学号&quot;,
+      &quot;password&quot;: &quot;请填写第二个密码&quot;,
+      &quot;authorization&quot;: &quot;&quot;,
+      &quot;cookie&quot;: &quot;&quot;
+    }
+  ]
+}</code></pre>
+<h3 id="section-6">字段说明</h3>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>含义与建议</th></tr></thead><tbody>
+<tr><td><code>users[].base_url</code></td><td>账号所属平台地址；当前适配站点保留默认值。</td></tr>
+<tr><td><code>users[].username</code></td><td>本人或已获授权的学号。</td></tr>
+<tr><td><code>users[].password</code></td><td>对应密码，只保存在自己的本机配置中。</td></tr>
+<tr><td><code>users[].authorization</code>、<code>cookie</code></td><td>可选授权会话字段，普通账号密码使用方式保持为空。</td></tr>
+<tr><td><code>global.server</code></td><td>本机状态服务地址，默认 <code>127.0.0.1:10087</code>；不要改成对外监听地址。</td></tr>
+<tr><td><code>global.limit</code></td><td>全局同时处理课程数上限，正整数，默认 3。</td></tr>
+<tr><td><code>global.per_account_limit</code></td><td>每个账号同时处理课程数上限，正整数，默认 1，同时受全局限制。</td></tr>
+<tr><td><code>global.page_size</code></td><td>课程分页大小，默认 32，通常无需修改。</td></tr>
+<tr><td><code>global.heartbeat_seconds</code></td><td>提交间隔，默认 30 秒，建议保留。</td></tr>
+<tr><td><code>global.timeout_seconds</code></td><td>网络请求超时，默认 30 秒。</td></tr>
+<tr><td><code>global.course_ids</code></td><td>只处理指定课程 ID；默认空数组，不额外按 ID 筛选。</td></tr>
+<tr><td><code>global.include_ended</code></td><td>是否包含截止日期已过课程，默认 <code>false</code>。</td></tr>
+</tbody></table></div>
+<p>多账号和多课程并发是客户端调度能力，不保证平台允许或认可任意并发。第一次使用建议保持默认并发，先检查配置和账号。</p>
+<h2 id="section-7">3. 先检查，再运行</h2>
+<p>双击 <code>启动.bat</code>。菜单中提供以下操作，按屏幕显示选择即可：</p>
+<div class="table-wrap"><table><thead><tr><th>菜单操作</th><th>用途</th></tr></thead><tbody>
+<tr><td>打开配置</td><td>用本机记事本打开顶层 <code>config.json</code>。</td></tr>
+<tr><td>检查</td><td>登录并只读检查课程和章节，不启动学习会话或提交学时；会访问平台。</td></tr>
+<tr><td>前台运行</td><td>在可见窗口运行；需要验证码时按提示处理。</td></tr>
+<tr><td>后台运行</td><td>隐藏窗口运行；不适合需要输入验证码的情况。</td></tr>
+<tr><td>打开状态页</td><td>在本机浏览器打开配置中的状态服务地址。</td></tr>
+<tr><td>停止</td><td>请求本程序结束会话并退出，之后再关闭相关窗口。</td></tr>
+<tr><td>预览</td><td>查看保留的 POLAR Logo、study class 名称和日志示例，不连接平台。</td></tr>
+<tr><td>打开教程</td><td>打开随包的本地 HTML 教程，不需要联网。</td></tr>
+<tr><td>退出</td><td>退出启动菜单；后台进程需另用“停止”操作结束。</td></tr>
+</tbody></table></div>
+<p>建议首次选择“检查”。若提示配置或账号错误，先修正后再继续；检查正常后选择“前台运行”。开始时不需要同时开启多个程序副本。</p>
+<p>前台运行期间保留运行窗口，不要直接点击关闭。需要结束时可在另一份启动菜单中选择“停止”；程序响应后再关闭窗口。后台运行时，关闭启动菜单不会自动停止后台进程。</p>
+<p>任务处理结束后，本机状态服务可能继续保留供查看。需要完全退出或释放端口时使用“停止”。</p>
+<h2 id="section-8">4. 查看状态和理解进度</h2>
+<p>默认状态页是 <a href="http://127.0.0.1:10087">http://127.0.0.1:10087</a>。它属于运行程序的这台电脑，不需要连接发布者电脑。程序未运行时，页面打不开是正常情况。</p>
+<ul>
+<li>“当前进度”来自平台回读。平台可能在活动会话中较长时间不刷新，结束会话后才返回新记录。</li>
+<li>“计时进度”按视频时长、平台已有百分比和实际经过时间独立显示。续学从平台已有百分比开始，每增加 1% 输出一次，同值不重复。</li>
+<li>计时进度到 100% 时仍显示“等待平台确认”。只有平台回读确认完成后，程序才进入下一视频；失败会暂停该课程。</li>
+<li>同步网络请求阻塞时，计时显示也可能延后，恢复后补齐已经过的计时整数。</li>
+<li>蓝色 INFO 表示普通信息或等待；绿色 INFO 表示平台确认或已完成跳过；红色 ERROR 表示失败或暂停。颜色仅用于标签，日志文件保持纯文本。</li>
+</ul>
+<p>本机计时或预览示例不能证明平台实际保存学时。状态页继续显示平台进度。视频进度完成也不代表作业、考试、学分或结课达标。</p>
+<h2 id="section-9">5. 更新版本与文件位置</h2>
+<p>更新时先用旧版的停止入口停止旧进程，再把新版解压到新文件夹。旧版 <code>config.json</code> 的配置结构仍可沿用，确认属于自己的配置后，将它复制到新版与 <code>启动.bat</code> 同层的位置；不要覆盖新版 <code>app/</code> 和 <code>docs/</code>。</p>
+<p>只迁移自己的配置即可。缓存与 Windows 用户绑定，换电脑或换 Windows 用户时不要依赖复制旧缓存；程序可按配置重新认证。</p>
+<p>运行后会生成：</p>
+<ul>
+<li><code>app/logs/</code>：本机日志。</li>
+<li><code>app/state/</code>：当前 Windows 用户保护的会话缓存。</li>
+<li><code>app/reports/</code>：本机状态记录。</li>
+</ul>
+<p>这些目录、个人配置和备份都不要上传。发布包中不包含发布者的真实账号、缓存或运行记录。</p>
+<h2 id="section-10">6. 常见问题</h2>
+<h3 id="section-11">提示配置格式错误，或保存后没有变化</h3>
+<p>确认编辑的是解压后顶层的 <code>config.json</code>，已经保存，且文件扩展名不是 <code>.json.txt</code>。检查英文双引号、逗号、括号及密码中的转义字符；可对照单账号示例恢复结构。排查时不要公开带密码的配置或截图。</p>
+<h3 id="section-12">账号或密码不正确</h3>
+<p>确认填写的是对应平台的学号和密码，账号属于本人或已获授权。先在平台正常页面核对是否能够登录；有验证码时先选择“检查”或“前台运行”并按提示输入，后台隐藏运行不能代替手动处理验证码。不要把认证失败当作学习成功。</p>
+<h3 id="section-13">状态端口被占用，或状态页显示旧版本</h3>
+<p>通常是旧程序仍在运行。先用旧版或新版菜单的“停止”结束对应状态服务，再启动一个新版副本。若确实需要修改 <code>global.server</code>，应保持 <code>127.0.0.1</code> 本机地址并为不同实例选择不同端口；菜单和程序应读取同一份配置。</p>
+<h3 id="section-14">很久没有新的百分比</h3>
+<p>“当前进度”依赖平台回读，可能延后刷新；“计时进度”也可能因同步网络请求阻塞而延后。查看最近一条状态是否为等待或错误，不要把没有新输出当成已经完成，也不要用本机计时替代平台确认。程序失败时会暂停该课程。</p>
+<h3 id="section-15">关闭菜单后程序为什么还在，如何停止</h3>
+<p>“后台运行”创建的是独立进程。再次双击 <code>启动.bat</code>，选择“停止”。若无法联系服务，确认程序是否已退出，以及配置中的端口是否与正在运行的实例一致。不要连续启动多个副本来尝试停止旧任务。</p>
+<h3 id="section-16">程序无法启动或下载不完整</h3>
+<p>重新下载 Windows x64 成品包并完整解压，确认 <code>app/study-class.exe</code> 存在，目录有写入权限。如果系统安全软件显示拦截或警告，应先核对发布地址、附件校验值和提示内容，按学校或设备管理要求处理；不要关闭防火墙或关闭系统安全防护。</p>
+<h2 id="section-17">7. 署名与使用边界</h2>
+<p>项目显示名称为 study class，启动画面的 POLAR 字符 Logo 是作者署名，原样保留。Logo 下方显示项目仓库网址 https://github.com/polar400/study-class，便于核对来源。</p>
+<p>免费使用和修改，禁止收费销售、收费下载、收费授权、收费代操作及变相收费。请阅读随附 LICENSE.md、<a href="免责声明.md">免责声明</a> 和 <a href="THIRD_PARTY_NOTICES.md">第三方来源说明</a>。</p>
+<p>感谢 <a href="https://github.com/aoaostar/mooc">aoaostar/mooc</a> 的原作者 Pluto / aoaostar 及贡献者。参考项目和第三方字体的权利、许可各自保留，署名不等于额外授权；本项目不是原作者官方发布，也不代表学校或平台认可。</p>
+<p>本程序使用后台 HTTP 会话，不解码或播放视频，不保证所有平台兼容，也不保证学习记录、成绩、作业、考试或结课结果。</p>
+</main>
+<footer>本页为随包离线教程，无需加载远程图片、脚本或字体。外部链接仅在点击时访问。<a href="免责声明.md">免责声明</a> · <a href="THIRD_PARTY_NOTICES.md">来源说明</a></footer>
+</body>
+</html>

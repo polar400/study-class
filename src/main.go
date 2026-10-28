@@ -18,7 +18,7 @@ import (
 	"time"
 )
 
-const version = "1.0.10"
+const version = "1.0.11"
 
 type AccountResult struct {
 	Label   string `json:"label"`
@@ -119,7 +119,7 @@ func entry() int {
 		defer server.Close()
 		log.Printf("状态页 http://%s（仅本机）", cfg.Global.Server)
 	}
-	log.Printf("先刷 v%s，模式=%s，账号=%d，全局并发=%d，每账号并发=%d", version, *mode, len(cfg.Users), cfg.Global.Limit, cfg.Global.PerAccount)
+	log.Printf("study class v%s，模式=%s，账号=%d，全局并发=%d，每账号并发=%d", version, *mode, len(cfg.Users), cfg.Global.Limit, cfg.Global.PerAccount)
 	if *mode == "study" {
 		log.Print("学习模式：多课并行，课内按未完成视频顺序继续。")
 	}
@@ -307,7 +307,7 @@ func startServer(addr string, m *Monitor, cancel context.CancelFunc) (*http.Serv
 	}
 	l, e := net.Listen("tcp", addr)
 	if e != nil {
-		return nil, errors.New("状态端口无法监听，可能已有先刷程序运行")
+		return nil, errors.New("状态端口无法监听，可能已有 study class 程序运行")
 	}
 	addr = l.Addr().String()
 	mux := http.NewServeMux()
@@ -350,4 +350,4 @@ func startServer(addr string, m *Monitor, cancel context.CancelFunc) (*http.Serv
 	return s, nil
 }
 
-const statusHTML = `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>先刷 · 运行状态</title><style>body{font:16px system-ui;background:#f5f6f8;color:#243044;max-width:1100px;margin:40px auto;padding:20px}button{padding:10px 18px;cursor:pointer}pre{background:white;padding:24px;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere}</style><h1>先刷 · 运行状态</h1><p>后台会话的实际效果以平台回读为准。视频完成不代表作业、学分或结课达标。</p><button id="stop">停止本程序</button><pre id="data">读取中…</pre><script>document.querySelector('#stop').onclick=async()=>{await fetch('/stop',{method:'POST'});document.querySelector('#stop').disabled=true};async function refresh(){try{const r=await fetch('/status');document.querySelector('#data').textContent=JSON.stringify(await r.json(),null,2)}catch{document.querySelector('#data').textContent+='\n服务已停止'}setTimeout(refresh,2000)}refresh()</script></html>`
+const statusHTML = `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>study class · 运行状态</title><style>body{font:16px system-ui;background:#f5f6f8;color:#243044;max-width:1100px;margin:40px auto;padding:20px}button{padding:10px 18px;cursor:pointer}pre{background:white;padding:24px;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere}</style><h1>study class · 运行状态</h1><p>后台会话的实际效果以平台回读为准。视频完成不代表作业、学分或结课达标。</p><button id="stop">停止本程序</button><pre id="data">读取中…</pre><script>document.querySelector('#stop').onclick=async()=>{await fetch('/stop',{method:'POST'});document.querySelector('#stop').disabled=true};async function refresh(){try{const r=await fetch('/status');document.querySelector('#data').textContent=JSON.stringify(await r.json(),null,2)}catch{document.querySelector('#data').textContent+='\n服务已停止'}setTimeout(refresh,2000)}refresh()</script></html>`
