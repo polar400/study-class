@@ -1,0 +1,23 @@
+# Personal configuration and runtime data
+config.json
+state/
+logs/
+reports/
+备份/
+compat-evidence/
+*.dpapi
+*.tmp
+
+# Build and release assets are uploaded through Releases
+*.exe
+*.zip
+dist/
+release-package/
+
+# Local-only diagnostics and machine data
+integration_test.go
+diagnostic_test.go
+progress_observation_test.go
+AGENTS.md
+desktop.ini
+.DS_Store

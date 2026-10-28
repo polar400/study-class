@@ -1,0 +1,21 @@
+{
+  "global": {
+    "server": "127.0.0.1:10087",
+    "limit": 3,
+    "per_account_limit": 1,
+    "page_size": 32,
+    "heartbeat_seconds": 30,
+    "timeout_seconds": 30,
+    "course_ids": [],
+    "include_ended": false
+  },
+  "users": [
+    {
+      "base_url": "https://bxait.haiqikeji.com",
+      "username": "请填写已授权学号",
+      "password": "请填写密码",
+      "authorization": "",
+      "cookie": ""
+    }
+  ]
+}
